@@ -1,0 +1,21 @@
+{
+  "name": "data-backup-restore-portal",
+  "version": "1.0.0",
+  "description": "Cloud backup and restore portal for SQL Server databases using Azure Blob Storage",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@azure/storage-blob": "^12.24.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mssql": "^11.0.1",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

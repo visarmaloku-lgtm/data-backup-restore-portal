@@ -1,14 +1,13 @@
 {
-  "buildCommand": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+  "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/build",
-  "installCommand": null,
+  "installCommand": "cd backend && npm install",
   "functions": {
-    "api/**/*.js": {
+    "api/index.js": {
       "runtime": "nodejs@20"
     }
   },
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/frontend/build/$1" }
+    { "src": "/api/(.*)", "dest": "api/index.js" }
   ]
 }

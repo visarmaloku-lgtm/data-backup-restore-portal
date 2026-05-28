@@ -1,14 +1,14 @@
 {
-  "experimentalServices": {
-    "frontend": {
-      "root": "frontend",
-      "routePrefix": "/",
-      "framework": "create-react-app"
-    },
-    "backend": {
-      "root": "backend",
-      "entrypoint": "server.js",
-      "routePrefix": "/api"
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "functions": {
+    "api/index.js": {
+      "runtime": "nodejs@20.x"
     }
-  }
+  },
+  "routes": [
+    { "src": "/api/(.*)", "dest": "api/index.js" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }

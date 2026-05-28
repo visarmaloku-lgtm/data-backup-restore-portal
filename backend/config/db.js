@@ -1,4 +1,9 @@
-const sql = require("mssql");
+let sql = null;
+try {
+  sql = require("mssql");
+} catch (e) {
+  console.warn("mssql not available, running in demo mode");
+}
 require("dotenv").config();
 
 const sqlConfig = {
@@ -21,6 +26,7 @@ const sqlConfig = {
 let poolInstance = null;
 
 async function getPool() {
+  if (!sql) throw new Error("mssql not available");
   if (!poolInstance) {
     poolInstance = new sql.ConnectionPool(sqlConfig);
     await poolInstance.connect();

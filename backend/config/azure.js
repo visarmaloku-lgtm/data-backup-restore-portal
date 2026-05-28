@@ -1,4 +1,13 @@
-const { BlobServiceClient, generateBlobSASQueryParameters, StorageSharedKeyCredential, BlobSASPermissions } = require("@azure/storage-blob");
+let BlobServiceClient, generateBlobSASQueryParameters, StorageSharedKeyCredential, BlobSASPermissions;
+try {
+  const azure = require("@azure/storage-blob");
+  BlobServiceClient = azure.BlobServiceClient;
+  generateBlobSASQueryParameters = azure.generateBlobSASQueryParameters;
+  StorageSharedKeyCredential = azure.StorageSharedKeyCredential;
+  BlobSASPermissions = azure.BlobSASPermissions;
+} catch (e) {
+  console.warn("@azure/storage-blob not available");
+}
 require("dotenv").config();
 
 const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;

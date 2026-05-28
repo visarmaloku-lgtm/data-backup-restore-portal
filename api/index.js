@@ -1,13 +1,14 @@
 const path = require("path");
+
+process.env.DEMO_MODE = "true";
+process.env.BACKUP_TEMP_DIR = "/tmp";
+
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-process.env.DEMO_MODE = "true";
-process.env.BACKUP_TEMP_DIR = "/tmp";
 
 app.use("/api", require("../backend/routes/backup"));
 
